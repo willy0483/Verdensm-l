@@ -6,6 +6,17 @@ export const MakeGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin: 4rem 0;
+
+  @media screen and (min-width: ${(props) => props.theme.grid.breakpoints.s}) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media screen and (min-width: ${(props) => props.theme.grid.breakpoints.m}) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.grid.breakpoints.l}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 export const Create = styled.div`
