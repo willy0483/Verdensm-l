@@ -1,22 +1,30 @@
 import { EducationStyled, EducationSubjects, SubjectStyled } from "./Education.Styled";
 import { TitleContainer } from "../TitleContainer/TitleContainer";
 
-const subjects= [
-    ["BIOLOGI", "#A41942"],
-    ["BIOTEKNOLOGI", "#DFA63B"],
-    ["KEMI", "#4BA039"],
-    ["DANSK", "#FF81FF"],
-    ["DESIGN", "#3101C9"],
-    ["HISTORIE", "#98C89E"],
-    ["FYSIK", "#0C6C9A"],
-    ["IDRÆT", "#27BDDF"],
-    ["MATEMATIK", "#6591A5"]
-
-]
-
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export const Education = () => {
+
+    const [apiData, setApiData] = useState([]);
+    const [error, setError] = useState();
+
+useEffect(() =>{
+    const fetchData = async () => {
+        try{
+            const repsonse = await axios.get('https://api.mediehuset.net/sdg/edu')
+            setApiData(repsonse.data.items)
+        } catch(error){
+            setError("Der er sket en fejl")
+        }
+      }
+      fetchData();
+},[]);
+
+
+
+console.log(apiData);
+
     return (
         <EducationStyled>
             <TitleContainer>UNDERVISNING</TitleContainer>
@@ -25,9 +33,9 @@ export const Education = () => {
             </article>
 
             <EducationSubjects >
-                {subjects.map((value, index) =>{
+                {apiData && apiData.map((value, index) =>{
                     return(
-                        <SubjectStyled key={index} background={value[1]}><h3>{value[0]}</h3></SubjectStyled>
+                        <SubjectStyled key={index} background={`#${value.color}`} ><h3>{value.name}</h3></SubjectStyled>
                     )
                 })}
             </EducationSubjects>

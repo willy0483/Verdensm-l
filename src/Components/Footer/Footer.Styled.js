@@ -39,3 +39,13 @@ export const FooterOrganizations = styled.div`
     margin: 1rem;
   }
 `;
+
+export const TimerContainer = styled.div`
+  margin: 2rem 0;
+  display: flex;
+  gap: 10px;
+  p {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+`;

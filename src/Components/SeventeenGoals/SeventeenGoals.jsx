@@ -8,6 +8,7 @@ import { GoalCard } from '../GoalCard/GoalCard';
 import { Link } from 'react-router-dom';
 
 export const SeventeenGoals = () => {
+
     return (
         <>
         <SeventeenGoalsStyled>
@@ -15,7 +16,7 @@ export const SeventeenGoals = () => {
         <Dividerimage />
         <div>
         <ul>
-            {goals.map((value, index) => {
+            {goals && goals.map((value, index) => {
               return (
                 <Link to={`/goal/${value.id}`} key={index} >
                   <GoalCard number={value.id} title={value.title} color={value.color} icon={value.icon} />

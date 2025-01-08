@@ -1,5 +1,6 @@
-import { FooterStyled, FooterArticle, FooterOrganizations } from "./Footer.Styled";
+import { FooterStyled, FooterArticle, FooterOrganizations , TimerContainer} from "./Footer.Styled";
 
+import { Timer } from "../Timer/Timer";
 
 import ms from "../../Assets/Ms-logo.png"
 import un from "../../Assets/UNDP-logo.png"
@@ -14,6 +15,9 @@ export const Footer = () =>{
                 <p>Dette digitale læringssite er udviklet af UNDP's nordiske kontor i Danmark, Globale Gymnasier og Mellemfolkeligt Samvirke/VerdensKlasse med støtte fra Danidas Oplysningsbevilling.</p>
 
                 <p>Vores mål med dette site er at give lærere og elever på landets ungdomsuddannelser mulighed for at opnå viden, holdninger og handlingskompetence i forhold til FN's verdensmål for bæredygtig udvikling. Sitet opdateres løbende med nyeste statistik, viden og nye undervisningsforløb.</p>
+                <TimerContainer>
+                <p>ANTAL SEKUNDER TIL 2030:</p><Timer></Timer>
+                </TimerContainer>
             </FooterArticle>
             <FooterOrganizations>
                 <h4>ORGANISATIONERNE BAG</h4>
@@ -24,8 +28,9 @@ export const Footer = () =>{
                     <img src={globlae} alt="globale-logo" />
                     <h4>UDVIKLET MED STØTTE FRA DANIDAS OPLYSNINGSBEVILLING</h4>
                     <img src={danida} alt="danida-logo" />
-            </FooterOrganizations>
 
+                    
+            </FooterOrganizations>
         </FooterStyled>
     )
 }

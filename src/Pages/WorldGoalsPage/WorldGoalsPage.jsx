@@ -2,7 +2,6 @@ import { TitleContainer } from "../../Components/TitleContainer/TitleContainer"
 import { WorldGoalsContent } from "../../Components/WorldGoalsContent/WorldGoalsContent"
 import { WorldGoalsArticleStyled } from "../../Components/WorldGoalsContent/WorldGoalsContent.Styled"
 import { SeventeenGoals } from "../../Components/SeventeenGoals/SeventeenGoals"
-
 export const WorldGoals = () => {
     return (
         <WorldGoalsContent>

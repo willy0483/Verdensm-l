@@ -1,45 +1,22 @@
 import { OwngoalStyled, Create, YourGoal , MakeGrid } from "./Owngoal.Styled";
 import { TitleContainer } from "../TitleContainer/TitleContainer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Owngoal = () => {
 
     const [color, setColor] = useState("#27BDDF");
-    const [goalText, setGoalText] = useState("MIN MÅLTEKST");
+    const [text, setText] = useState("MIN MÅLTEKST");
+    const [error , setErorr] = useState("");
 
 
-    const validateColorInputs = () => {
-        let isValid = true;
-        if (color === "") {
-            isValid = false;
+    useEffect(() => {
+        if(text){
+            setErorr("");
+        }else{
+            setErorr("Tekst må ikke være tom");
         }
-        if (color.length > 8) {
-            alert("Farvekoden må kun være 8 tegn lang");
-            isValid = false;
-        }
-        return isValid;
-    }
 
-    const validateTextInputs = () => {
-        let isValid = true;
-        if (goalText === "") {
-            isValid = false;
-        }
-        return isValid;
-    }
-
-    const handleGoalTextChange = (e) => {
-        console.log(e.target.value);
-        setGoalText(e.target.value || "MIN MÅLTEKST");
-        validateTextInputs();
-    };
-
-    const handleColorChange = (e) => {
-        console.log(e.target.value);
-        setColor(e.target.value || "#27BDDF");
-        validateColorInputs();
-    };
-
+    }, [color, text]);
 
 
 
@@ -50,21 +27,24 @@ export const Owngoal = () => {
                 <Create>
                     <h3>Mangler der et mål?</h3>
                     <p>Med tekst feltet herunder kan du bygge dit eget mål og give det en bestemt farve.</p>
+
+
+                    {error && <span style={{ color: "red" }}>{error}</span>}
                     <section>
                         <div>
-                            <label htmlFor="goalText">Måltekst:   </label>
-                            <input onChange={handleGoalTextChange} id="goalText" type="text" placeholder="Indtast titel på mål" />
+                            <label htmlFor="text">Måltekst:   </label>
+                            <input onChange={(e) => setText(e.target.value)} id="text" type="text" placeholder="Indtast titel på mål" />
                         </div>
                         <div>
                             <label htmlFor="colorCode">Farvekode:</label>
-                            <input onChange={handleColorChange}
+                            <input onChange={(e) => setColor(e.target.value)}
                                    id="colorCode" type="text" placeholder="Indtast farvekode i heximal værdi" />
                         </div>
                     </section>
                 </Create>
 
                 <YourGoal color={color}>
-                    <h3>{goalText}</h3>
+                    <h3>{text}</h3>
                 </YourGoal>
             </MakeGrid>
         </OwngoalStyled>
