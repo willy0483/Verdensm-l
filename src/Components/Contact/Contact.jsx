@@ -12,7 +12,7 @@ export const Contact = () =>{
     const [nameError, setNameError] = useState("");
     const [messageError, setMessageError] = useState("");
 
-    let emailRegex = /[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm;
+    let emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     let nameRegex = /^[a-zA-Z\s'-]+$/;
 
    const handleSubmit = (e) =>{
@@ -23,6 +23,8 @@ export const Contact = () =>{
     if (!emailRegex.test(email)) {
         setEmailError("*");
         isValid = false;
+        console.log("email error");
+        
     } else {
         setEmailError("");
     }
@@ -30,6 +32,8 @@ export const Contact = () =>{
     if(!nameRegex.test(name)){
         setNameError("*");
         isValid = false;
+        console.log("name error");
+        
     }else{
         setNameError("");
     }
@@ -37,6 +41,8 @@ export const Contact = () =>{
     if (message.length < 1) {
         setMessageError("*");
         isValid = false;
+        console.log("message error");
+        
     }else{
         setMessageError("");
     }
